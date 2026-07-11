@@ -930,7 +930,7 @@
     images.forEach((img, idx) => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
-        item.innerHTML = `<img src="${img.thumb}" alt="Gallery image ${idx+1}" loading="lazy" onclick="openLightbox(${idx})">`;
+        item.innerHTML = `<img src="${img.full}" alt="Gallery image ${idx+1}" loading="lazy" onclick="openLightbox(${idx})">`;
         grid.appendChild(item);
     });
 
