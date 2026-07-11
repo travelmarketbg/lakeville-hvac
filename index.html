@@ -185,12 +185,21 @@
 
         /* ===== HERO ===== */
         .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: #fff;
             padding: 80px 0 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26,26,46,0.82) 0%, rgba(22,33,62,0.78) 50%, rgba(15,52,96,0.82) 100%);
+            pointer-events: none;
+            z-index: 1;
         }
         .hero::after {
             content: '';
@@ -201,8 +210,12 @@
             height: 200%;
             background: radial-gradient(circle at 30% 50%, rgba(192,57,43,0.08) 0%, transparent 60%);
             pointer-events: none;
+            z-index: 1;
         }
-        .hero .container { position: relative; z-index: 1; }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
         .hero-badge {
             display: inline-block;
             background: rgba(255,255,255,0.12);
@@ -958,6 +971,11 @@
         if (e.key === 'ArrowLeft') changeImage(-1);
         if (e.key === 'ArrowRight') changeImage(1);
     });
+
+    // Set hero background from the 6th gallery image (index 5)
+    if (images.length > 5) {
+        document.querySelector('.hero').style.backgroundImage = `url("${images[5].full}")`;
+    }
     </script>
 
 
